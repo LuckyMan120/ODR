@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "step": 1,
+    "component": "CaseIntro"
+  },
+  {
+    "id": 2,
+    "step": 3,
+    "component": "GroundRules"
+  },
+  {
+    "id": 3,
+    "step": 4,
+    "component": "WhatHappened"
+  },
+  {
+    "id": 4,
+    "step": 6,
+    "component": "MyIssues"
+  },
+  {
+    "id": 5,
+    "step": 7,
+    "component": "MyInterests"
+  },
+  {
+    "id": 6,
+    "step": 8,
+    "component": "MyPerspective"
+  },
+  {
+    "id": 7,
+    "step": 9,
+    "component": "MyAlternatives"
+  },
+  {
+    "id": 8,
+    "step": 10,
+    "component": "ConfirmSharing"
+  },
+  {
+    "id": 9,
+    "step": 9,
+    "component": "MyAlternatives"
+  },
+  {
+    "id": 10,
+    "step": 10,
+    "component": "AgreeToShare"
+  },
+  {
+    "id": 11,
+    "step": 12,
+    "component": "OthersInfo"
+  },
+  {
+    "id": 12,
+    "step": 14,
+    "component": "ExploreOptions"
+  },
+  {
+    "id": 13,
+    "step": 14,
+    "component": "EvaluateOptions"
+  },
+  {
+    "id": 14,
+    "step": 14,
+    "component": "Decide"
+  }
+]

@@ -1,0 +1,1647 @@
+{
+	"info": {
+		"_postman_id": "4139c5fc-0bc6-47b1-8971-409c9b6f9669",
+		"name": "GRV3",
+		"description": "A collection of all NKB API methods",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "blueprints (crud)",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/:model?limit=&skip=&sort=",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								":model"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "skip",
+									"value": ""
+								},
+								{
+									"key": "sort",
+									"value": ""
+								}
+							],
+							"variable": [
+								{
+									"key": "model",
+									"value": "user",
+									"description": "Model name"
+								}
+							]
+						},
+						"description": "Get all documents in a model"
+					},
+					"response": [
+						{
+							"name": "Get All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{host}}:{{port}}/:model",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										":model"
+									],
+									"variable": [
+										{
+											"key": "model",
+											"value": "user",
+											"description": "Model name"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+								},
+								{
+									"key": "set-cookie",
+									"value": "sails.sid=s%3A2VuoiunSAvT1NFfct0QQ7dyHs8BFZFFD.crKhkp9TL3IyUrg2l6rmPmUibwK3yOoM4FOqvcD0o%2FQ; Path=/; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Jun 2020 13:55:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						},
+						{
+							"name": "Get All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{host}}:{{port}}/:model",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										":model"
+									],
+									"variable": [
+										{
+											"key": "model",
+											"value": "user",
+											"description": "Model name"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "705"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c1-FPZdUWNlkdl38khpBmfA293I81E\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Jun 2020 21:24:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"transactions\": [],\n        \"currencies\": [],\n        \"orderRequest\": [],\n        \"trades\": [],\n        \"customerTrades\": [],\n        \"orders\": [],\n        \"createdAt\": 1592335768409,\n        \"updatedAt\": 1592335768409,\n        \"id\": 9,\n        \"email\": \"test@test.com\",\n        \"username\": \"test\",\n        \"password\": \"1234\",\n        \"emailVerified\": false,\n        \"emailVerifiedAt\": \"\"\n    },\n    {\n        \"transactions\": [],\n        \"currencies\": [],\n        \"orderRequest\": [],\n        \"trades\": [],\n        \"customerTrades\": [],\n        \"orders\": [],\n        \"createdAt\": 1592336997534,\n        \"updatedAt\": 1592336997534,\n        \"id\": 11,\n        \"email\": \"test1@test.com\",\n        \"username\": \"test1\",\n        \"password\": \"1234\",\n        \"emailVerified\": false,\n        \"emailVerifiedAt\": \"\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/:model/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								":model",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "model",
+									"value": "user",
+									"description": "Model name"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Document id"
+								}
+							]
+						},
+						"description": "Get one document by id"
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@test.com\",\r\n    \"username\": \"test\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/:model",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								":model"
+							],
+							"variable": [
+								{
+									"key": "model",
+									"value": "user",
+									"description": "Model name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"new username\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/:model/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								":model",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "model",
+									"value": "user",
+									"description": "Model name"
+								},
+								{
+									"key": "id",
+									"value": "9",
+									"description": "Model id"
+								}
+							]
+						},
+						"description": "Update document by id"
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"new username\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}:{{port}}/:model/:id",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										":model",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "model",
+											"value": "user"
+										},
+										{
+											"key": "id",
+											"value": "9"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "324"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"144-JB4koSBumoxKLpKKqHIYUbEjOVs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Jun 2020 21:29:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"transactions\": [],\n    \"currencies\": [],\n    \"orderRequest\": [],\n    \"trades\": [],\n    \"customerTrades\": [],\n    \"orders\": [],\n    \"createdAt\": 1592335768409,\n    \"updatedAt\": 1592342954816,\n    \"id\": 9,\n    \"email\": \"test@test.com\",\n    \"username\": \"new username\",\n    \"password\": \"1234\",\n    \"emailVerified\": false,\n    \"emailVerifiedAt\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/:model/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								":model",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "model",
+									"value": "user",
+									"description": "Model name"
+								},
+								{
+									"key": "id",
+									"value": "9",
+									"description": "Model id"
+								}
+							]
+						},
+						"description": "Delete document by id"
+					},
+					"response": []
+				},
+				{
+					"name": "Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/:model?limit=&skip=&sort=",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								":model"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "skip",
+									"value": ""
+								},
+								{
+									"key": "sort",
+									"value": ""
+								}
+							],
+							"variable": [
+								{
+									"key": "model",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "CRUD API for all models endpoints",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "sign-in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"john@gmail.com\",\r\n    \"password\": \"1234abcd\",\r\n    \"slug\": \"my-org\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/user/sign-in",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign-out",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/user/sign-out",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"sign-out"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/user/me",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"neo@email.com\",\r\n    \"firstName\": \"Thomas\",\r\n    \"lastName\": \"Anderson\",\r\n    \"phone\": \"\",\r\n    \"company\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/user/register",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password-reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"neo@email.com\",\r\n    \"token\": \"b272f3fd-3cd2-4107-8719-fb099f028562\",\r\n    \"password\": \"1234abcd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/user/password-reset",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"password-reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "request-password-reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"john@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/user/request-password-reset",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"request-password-reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-me",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"1234abcd\",\r\n    \"firstName\": \"newName\",\r\n    \"lastName\": \"newLastName\",\r\n    \"company\": \"\",\r\n    \"phone\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/user/me",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orgs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/user/orgs",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"orgs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set-org",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"org\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/user/org",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"org"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mediations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/user/cases",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"cases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mediation-invites",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/user/mediation-invites",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"mediation-invites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "issues",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/user/issues",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"issues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "notifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/user/notifications",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "count-notifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/user/notifications/count",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"notifications",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "subscribe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/user/subscribe",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"subscribe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unsubscribe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/user/unsubscribe",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"unsubscribe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "org",
+			"item": [
+				{
+					"name": "get-users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/org/users",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"org",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users-count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/org/users/count",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"org",
+								"users",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": 3,\r\n    \"role\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/org/user",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"org",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/org/user/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"org",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy-user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/org/user/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"org",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-invite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"neo@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/org/invite",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"org",
+								"invite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-org",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"new org name\",\r\n    \"abn\": \"1234\",\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/org",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"org"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-issues",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/org/issues",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"org",
+								"issues"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "mediation",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"addrss@email.com\",\r\n    \"type\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/case",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"case"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "mediation-invite",
+			"item": [
+				{
+					"name": "accept",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/mediationInvite/:id/accept",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"mediationInvite",
+								":id",
+								"accept"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reject",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/mediationInvite/:id/reject",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"mediationInvite",
+								":id",
+								"reject"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "issue",
+			"item": [
+				{
+					"name": "create-complaint",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"myIssue\",\r\n    \"pathway\": 1,\r\n    \"org\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/issue/complaint",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue",
+								"complaint"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-mediation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"myIssue\",\r\n    \"pathway\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/issue/mediation",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue",
+								"mediation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "craete-data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"value\": \"data value\",\r\n    \"type\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/issue/:id/data",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue",
+								":id",
+								"data"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "steps",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/issue/:id/steps",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue",
+								":id",
+								"steps"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "party",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/issue/:id/party",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue",
+								":id",
+								"party"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/issue/:id/data",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue",
+								":id",
+								"data"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "join",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/issue/:id/join",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue",
+								":id",
+								"join"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find-one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/issue/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "withdraw",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"note\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/issue/:id/withdraw",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue",
+								":id",
+								"withdraw"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "issue-data",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"value\": \"new value\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/issue-data/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue-data",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/issue-data/:id",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue-data",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/issue-data/:id/status",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue-data",
+								":id",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/issue-data/:id/status",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue-data",
+								":id",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "commnets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/issue-data/:id/comments",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue-data",
+								":id",
+								"comments"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "count-comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/issue-data/:id/comments/count",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue-data",
+								":id",
+								"comments",
+								"count"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"foo bar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/issue-data/:id/comment",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue-data",
+								":id",
+								"comment"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-revision",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"value\": \"foo bar revision\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/issue-data/:id/revision",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"issue-data",
+								":id",
+								"revision"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notification",
+			"item": [
+				{
+					"name": "dismiss",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/notification/:id/dismiss",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"notification",
+								":id",
+								"dismiss"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/notification/:id/read",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"notification",
+								":id",
+								"read"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base}}/ping",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base",
+			"value": "http://localhost:1337"
+		}
+	]
+}

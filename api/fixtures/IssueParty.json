@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "issue": 1,
+    "initiator": 1,
+    "type": "particpant"
+  },
+  {
+    "id": 2,
+    "issue": 1,
+    "type": "responder"
+  }
+]

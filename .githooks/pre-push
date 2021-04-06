@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+echo '[pre-push hoook] running linter';
+
+cd api;
+npm run lint;
+
+cd ../client;
+npm run lint;

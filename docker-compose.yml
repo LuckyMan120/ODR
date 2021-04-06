@@ -1,0 +1,80 @@
+version: '3.3'
+
+services:
+  db:
+#    platform: linux/x86_64
+    image: mysql:5.7.31
+    ports:
+      - 3306
+    environment:
+      MYSQL_DATABASE: grv3
+      MYSQL_USER: grv3
+      MYSQL_PASSWORD: grv3
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: grv3
+      PMA_PASSWORD: grv3
+      PMA_ARBITRARY: 1
+
+  redis:
+    image: redis:6.0.9
+
+  api:
+    image: node:14.15.3
+    command: bash start-api.sh
+    ports:
+      - 1337:1337
+      - 9229:9229
+    environment:
+      sails_datastores__default__url: mysql://grv3:grv3@db:3306/grv3
+      sails_session__url: redis://redis:6379
+      sails_abr__guid: ${sails_abr__guid}
+      sails_getstream__key: ${sails_getstream__key}
+      sails_getstream__secret: ${sails_getstream__secret}
+      sails_email__transporter__host: ${sails_email__transporter__host}
+      sails_email__transporter__port: ${sails_email__transporter__port}
+      sails_email__transporter__auth__user: ${sails_email__transporter__auth__user}
+      sails_email__transporter__auth__pass: ${sails_email__transporter__auth__pass}
+      sails_stripe__secretKey: ${STRIPE_SECRET_KEY}
+      sails_stripe__signingSecret: ${sails_stripe__signingSecret}
+      sails_api2pdf__apiKey: ${sails_api2pdf__apiKey}
+      sails_recaptcha__secretKey: ${sails_recaptcha__secretKey}
+    volumes:
+      - ./api:/api
+      - ./.eslintrc:/.eslintrc
+      - ./start-api.sh:/start-api.sh
+    depends_on:
+      - redis
+      - db
+
+  client:
+    image: node:14.15.3
+    command: bash start-client.sh
+    environment:
+      API_URL: http://api:1337
+      STRIPE_PUBLISHABLE_KEY: ${STRIPE_PUBLISHABLE_KEY}
+      GETSTREAM_KEY: ${sails_getstream__key}
+      RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY}
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client:/client
+      - ./.eslintrc:/.eslintrc
+      - ./start-client.sh:/start-client.sh
+    depends_on:
+      - api
+
+  stripe-cli:
+    image: stripe/stripe-cli:latest
+    environment:
+      STRIPE_API_KEY: ${STRIPE_SECRET_KEY}
+    command: listen --forward-to http://api:1337/stripe/webhook
+    depends_on:
+    - api

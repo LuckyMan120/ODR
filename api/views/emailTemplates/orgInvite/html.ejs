@@ -1,0 +1,14 @@
+<%- include('../header'); -%>
+<p class="text-body">
+  <%= __('You are invited to the organization')%><br>
+  <%= __('To accept the invitation ')%>
+  <a 
+  href="<%=clientURL%>/<%=slug%>/register?email=<%=email%>&token=<%=token%>">
+    click here
+  </a>
+  <br><br>
+  <%= __('Or copy and paste this link in to the address browser address bar: ')%>
+  <br>
+  <%=clientURL%>/<%=slug%>/register?email=<%=email%>&token=<%=token%>
+</p>
+<%- include('../footer'); -%>

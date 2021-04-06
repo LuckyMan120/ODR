@@ -1,0 +1,28 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+
+//Theme main.
+$color_primary: #24346c;
+$color_secondary: #172145;
+$color_accent: #FAAD50;
+$color_background: #FFFFFF;
+$accent_swatch: color-yiq($color_accent);
+$color_success: #48947a;
+$color_border: #DDDFE7;
+$color_border_input: #ced4da;
+
+$white: #F6F6F7;
+$black: #313131;
+$red: #e64040;
+
+$color_text: $white;
+
+$theme-colors: ("primary": $color_primary,
+  "secondary": $color_secondary,
+  "info": $color_accent,
+  "dark": $color_primary,
+  "warning": $color_accent)
+
+  

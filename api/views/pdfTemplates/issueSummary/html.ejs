@@ -1,0 +1,206 @@
+<tr>
+  <td
+    bgcolor="#ffffff"
+    style="padding: 40px 30px 40px 30px;"
+  >
+    <table
+      border="0"
+      cellpadding="0"
+      cellspacing="0"
+      width="100%"
+      style="border-collapse: collapse;"
+    >
+      <tr>
+        <td
+          style="color: #153643; font-family: Arial, sans-serif;"
+        >
+          <h2><%= __('complaintSummaryHeader') %></h2>
+          <small v-if="issue.submittedAt">
+            <%= __(
+              'complaintWasSubmittedOn',
+              issue.id,
+              moment(issue.submittedAt).format('DD MMM YYYY HH:mm')
+            ) %>
+          </small><br>
+          <small>
+            <%= __(
+              'thisSummaryWasPrintedOn',
+              moment().format('DD MMM YYYY HH:mm')
+            ) %>
+          </small>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table
+            border="1"
+            cellpadding="6"
+            cellspacing="0"
+            width="100%"
+            style="border-collapse: collapse;margin-top:20px;font-family: Arial, sans-serif; font-size: 16px; line-height: 24px;border: 1px solid #d3d3d3"
+          >
+            <tr>
+              <td style="width: 200px">
+                <%= __('submittedBy') %>:
+              </td>
+              <td style="vertical-align:top">
+                <%= responder.name %>
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align:top">
+                <%= __('withRegardTo') %>:
+              </td>
+              <td style="vertical-align:top">
+                <%= participant.name %>
+              </td>
+            </tr>
+
+            <% if (issueSector) { %>
+            <tr>
+              <td style="vertical-align:top">
+                <%= __('sector') %>:
+              </td>
+              <td style="vertical-align:top">
+                <%= __(issueSector.value) %>
+              </td>
+            </tr>
+            <% } %>
+
+            <% if (issueSector) { %>
+            <tr>
+              <td style="vertical-align:top">
+                <%= __('category') %>:
+              </td>
+              <td style="vertical-align:top">
+                <%= __(issueCategory.value) %>
+              </td>
+            </tr>
+            <% } %>
+
+            <% if (subCategories) { %>
+              <tr>
+                <td style="vertical-align:top">
+                  <%= __('complaintType') %>:
+                </td>
+                <td style="vertical-align:top">
+                  <%= subCategories.value %>
+                </td>
+              </tr>
+            <% } %>
+
+            <% if (whatHappened) { %>
+              <tr>
+                <td style="vertical-align:top">
+                  <%= __('whatHappened') %>:
+                </td>
+                <td style="vertical-align:top">
+                  <%= __(whatHappened.value) %>
+                </td>
+              </tr>
+            <% } %>
+
+            <% if (expectations) { %>
+              <tr>
+                <td style="vertical-align:top">
+                  <%= __('whatWasExpected') %>:
+                </td>
+                <td style="vertical-align:top">
+                  <%= __(expectations.value) %>
+                </td>
+              </tr>
+            <% } %>
+
+            <tr>
+              <td style="vertical-align:top">
+                <%= __('agreedSolutions') %>:
+              </td>
+              <td style="vertical-align:top">
+                
+                <% if (agreementItems.length) { %>
+                  <% agreementItems.forEach(agreement => { %>
+                    <div style="margin-bottom:12px;">
+                      <%= agreement.value %>
+                    </div>
+                    <!-- TODO: party status -->
+                  <% }); %>
+                <% } else { %>
+                  <div>
+                    <p>
+                      <%= __('noAgreementItems') %>
+                    </p>
+                  </div>
+                <% } %>
+
+              </td>
+            </tr>
+
+            <tr>
+              <td style="vertical-align:top">
+                <%= __('agreement') %>:
+              </td>
+              <td style="vertical-align:top">
+
+                <% if (resolutionConfirmed.length) { %>
+                  <% resolutionConfirmed.forEach(resolution => { %>
+                    <%= __(
+                      'pdfAgreedOn',
+                      resolution.party.name,
+                      moment(resolution.createdAt).format('LLL')
+                    ) %> <br />
+                  <% }) %>
+                <% } %>
+
+              </td>
+            </tr>
+
+            <% if (systemicProblems) { %>
+              <tr>
+                <td style="vertical-align:top">
+                  <%= __('systemicProblems') %>:
+                </td>
+                <td style="vertical-align:top">
+                  <%= __(systemicProblems.value) %>
+                </td>
+              </tr>
+            <% } %>
+
+            <% if (underlyingCauses) { %>
+              <tr>
+                <td style="vertical-align:top">
+                  <%= __('underlyingCauses') %>:
+                </td>
+                <td style="vertical-align:top">
+                  <%= __(underlyingCauses.value) %>
+                </td>
+              </tr>
+            <% } %>
+
+            <% if (improvementRecom) { %>
+              <tr>
+                <td style="vertical-align:top">
+                  <%= __('improvementRecom') %>:
+                </td>
+                <td style="vertical-align:top">
+                  <%= __(improvementRecom.value) %>
+                </td>
+              </tr>
+            <% } %>
+
+            <% if (resolutionCost) { %>
+              <tr>
+                <td style="vertical-align:top">
+                  <%= __('resolutionCost') %>:
+                </td>
+                <td style="vertical-align:top">
+                  <%= __(resolutionCost.value) %>
+                </td>
+              </tr>
+            <% } %>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

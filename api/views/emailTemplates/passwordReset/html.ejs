@@ -1,0 +1,36 @@
+<%- include('../header'); -%>
+<tr>
+    <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+            <tr>
+                <td style="color: #153643; font-family: Arial, sans-serif;">
+                    <h1 style="font-size: 24px; margin: 0;"><%= __('Password reset')%></h1>
+                </td>
+            </tr>
+            <tr>
+                <td style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; padding: 20px 0 30px 0;">
+                    <p style="margin: 0;">
+                      <%= __('To reset your password please click on the button below:')%>                         
+                    </p>
+                    <p style="text-align: center;">
+                    <br><br>
+                        <a type="button" 
+                        href="<%=clientURL%>/password-reset?email=<%=email%>&token=<%=token%>" 
+                        style="text-decoration: none; font-weight: 500; text-align: center; vertical-align: middle; background-color: transparent; border: 1px solid #FAAD50; font-size: 20px; border-radius: 0.3rem; color: #FAAD50; border-color: #FAAD50; padding: 3px 15px 7px; margin: 0 8px; cursor: pointer;">
+                          <%= __('Reset Password')%>
+                        </a>
+                    </p>
+                    <p>
+                    <br><br>
+                     <span style="font-size: 12px;margin-top:12px;text-align: center;">
+                          <%= __('Or copy and paste this link in to the address browser address bar:')%>
+                          <%=clientURL%>/password-reset?email=<%=email%>&token=<%=token%>
+                        </span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<%- include('../footer'); -%>
+

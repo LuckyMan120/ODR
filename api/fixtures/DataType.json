@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "issues",
+    "activityDesc": "updated issues",
+    "shared": true,
+    "multi" : true
+  },
+  {
+    "id": 2,
+    "name": "interest",
+    "activityDesc": "updated interests",
+    "shared": true,
+    "multi" : true
+  },
+  {
+    "id": 3,
+    "name": "confirmedReadOthersDetails",
+    "activityDesc": "read others details",
+    "shared": false
+  },
+  {
+    "id": 4,
+    "name": "alternative",
+    "activityDesc": "updatedAlternatives",
+    "shared": false,
+    "multi" : true
+  },
+  {
+    "id": 5,
+    "name": "perspective",
+    "activityDesc": "updatedPerspective",
+    "shared": false,
+    "multi" : true
+  },
+  {
+    "id": 6,
+    "name": "agreedToGroundRules",
+    "activityDesc": "updated issues",
+    "shared": true
+  },
+  {
+    "id": 7,
+    "name": "agreedToShare",
+    "activityDesc": "agreed to share their issues and interests",
+    "shared": true
+  },
+  {
+    "id": 8,
+    "name": "finishedTelling",
+    "activityDesc": "finished the telling step",
+    "shared": true
+  },
+  {
+    "id": 9,
+    "name": "finishedEnteringOptions",
+    "activityDesc": "finished entering options",
+    "shared": true
+  },
+  {
+    "id": 10,
+    "name": "finishedEvaluatingOptions",
+    "activityDesc": "finished evaluating options",
+    "shared": true
+  },
+  {
+    "id": 11,
+    "name": "whatHappened",
+    "activityDesc": "entered what happened",
+    "shared": true
+  },
+  {
+    "id": 12,
+    "name": "issueCategory",
+    "activityDesc": "selectedIssueCategory",
+    "shared": true
+  },
+  {
+    "id": 13,
+    "name": "issueSubCategory",
+    "activityDesc": "selectedIssueSubCategory",
+    "shared": true
+  },
+  {
+    "id": 14,
+    "name": "expectations",
+    "activityDesc": "enteredExpectations",
+    "shared": true
+  },
+  {
+    "id": 15,
+    "name": "goals",
+    "activityDesc": "enteredGoals",
+    "shared": true
+  },
+  {
+    "id": 16,
+    "name": "conversationStarted",
+    "activityDesc": "StartedConversation",
+    "shared": true
+  },
+  {
+    "id": 17,
+    "name": "resolution",
+    "activityDesc": "recordedResolution",
+    "shared": true
+  },
+  {
+    "id": 18,
+    "name": "resolutionConfirmed",
+    "activityDesc": "confirmedResolution",
+    "shared": true
+  },
+  {
+    "id": 19,
+    "name": "agreedToMediate",
+    "activityDesc": "agreedToMediate",
+    "shared": true
+  },
+  {
+    "id": 20,
+    "name": "resolutionType",
+    "activityDesc": "resolutionType",
+    "shared": true
+  },
+  {
+    "id": 21,
+    "name": "agreementItem",
+    "activityDesc": "agreementItem",
+    "shared": true
+  },
+  {
+    "id": 22,
+    "name": "issueSector",
+    "activityDesc": "issueSector",
+    "shared": true
+  },
+  {
+    "id": 23,
+    "name": "systemicProblems",
+    "activityDesc": "systemicProblems",
+    "shared": true
+  },
+  {
+    "id": 24,
+    "name": "underlyingCauses",
+    "activityDesc": "underlyingCauses",
+    "shared": true
+  },
+  {
+    "id": 25,
+    "name": "improvementRecom",
+    "activityDesc": "improvementRecom",
+    "shared": true
+  },
+  {
+    "id": 26,
+    "name": "resolutionCost",
+    "activityDesc": "resolutionCost",
+    "shared": true
+  }
+]

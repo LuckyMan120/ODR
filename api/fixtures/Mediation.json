@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "John Smith and Jenny Jones",
+    "org": "1",
+    "caseType" : 1,
+    "initiatorPathway": 1,
+    "partyPathway": 1,
+    "mediatorPathway": 2
+  },
+  {
+    "id": 2,
+    "name": "Case 2",
+    "org": "1",
+    "caseType" : 1,
+    "initiatorPathway": 1,
+    "partyPathway": 1,
+    "mediatorPathway": 2
+  },
+  {
+    "id": 3,
+    "name": "Case 3",
+    "org": "2",
+    "caseType" : 1,
+    "initiatorPathway": 1,
+    "partyPathway": 1,
+    "mediatorPathway": 2
+  }
+]

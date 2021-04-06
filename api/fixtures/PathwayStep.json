@@ -1,0 +1,157 @@
+[
+  {
+    "id": 1,
+    "pathway": 1,
+    "name": "complaintDetailsResponder",
+    "sortOrder": 1,
+    "component": "complaintDetailsResponder"
+  },
+  {
+    "id": 2,
+    "pathway": 1,
+    "name": "info",
+    "sortOrder": 2,
+    "component": "complaintInfo"
+  },
+  {
+    "id": 3,
+    "pathway": 1,
+    "name": "conversation",
+    "sortOrder": 3,
+    "component": "complaintConversation"
+  },
+  {
+    "id": 4,
+    "pathway": 1,
+    "name": "resolution",
+    "sortOrder": 4,
+    "component": "complaintResolution"
+  },
+  {
+    "id": 5,
+    "pathway": 1,
+    "name": "mediationIntro",
+    "sortOrder": 5
+  },
+  {
+    "id": 6,
+    "pathway": 1,
+    "name": "mediationOverview",
+    "parent": 6,
+    "sortOrder": 6,
+    "component": "mediationOverview"
+  },
+  {
+    "id": 7,
+    "pathway": 1,
+    "name": "groundRules",
+    "parent": 6,
+    "sortOrder": 7
+  },
+  {
+    "id": 8,
+    "pathway": 1,
+    "name": "tell",
+    "sortOrder": 8
+  },
+  {
+    "id": 9,
+    "pathway": 1,
+    "name": "issues",
+    "parent": 9,
+    "sortOrder": 9
+  },
+  {
+    "id": 10,
+    "pathway": 1,
+    "name": "interests",
+    "parent": 9,
+    "sortOrder": 10
+  },
+  {
+    "id": 11,
+    "pathway": 1,
+    "name": "perspective",
+    "parent": 9,
+    "sortOrder": 11
+  },
+  {
+    "id": 12,
+    "pathway": 1,
+    "name": "alternatives",
+    "parent": 9,
+    "sortOrder": 12
+  },
+  {
+    "id": 13,
+    "pathway": 1,
+    "name": "share",
+    "parent": 9,
+    "sortOrder": 13
+  },
+  {
+    "id": 14,
+    "pathway": 1,
+    "name": "listen",
+    "sortOrder": 14
+  },
+  {
+    "id": 15,
+    "pathway": 1,
+    "name": "othersInfo",
+    "parent": 15,
+    "sortOrder": 15
+  },
+  {
+    "id": 16,
+    "pathway": 1,
+    "name": "communicate",
+    "sortOrder": 16
+  },
+  {
+    "id": 17,
+    "pathway": 1,
+    "name": "options",
+    "parent": 17,
+    "sortOrder": 17
+  },
+  {
+    "id": 18,
+    "pathway": 1,
+    "name": "evaluate",
+    "parent": 17,
+    "sortOrder": 18
+  },
+  {
+    "id": 19,
+    "pathway": 1,
+    "name": "decide",
+    "parent": 17,
+    "sortOrder": 19
+  },
+  {
+    "id": 20,
+    "pathway": 1,
+    "name": "download",
+    "parent": 17,
+    "sortOrder": 20
+  },
+  {
+    "id": 21,
+    "pathway": 1,
+    "name": "mediatorSummary",
+    "sortOrder": 21
+  },
+  {
+    "id": 22,
+    "pathway": 1,
+    "name": "mediatorNegotiate",
+    "sortOrder": 22
+  },
+  {
+    "id": 23,
+    "pathway": 1,
+    "name": "mediatorDownload",
+    "sortOrder": 23
+  }
+]

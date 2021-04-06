@@ -1,0 +1,57 @@
+{
+  "name": "api",
+  "private": true,
+  "version": "0.0.0",
+  "description": "a Sails application",
+  "keywords": [],
+  "dependencies": {
+    "@sailshq/connect-redis": "^3.2.1",
+    "@sailshq/lodash": "^3.10.3",
+    "@sailshq/socket.io-redis": "^5.2.0",
+    "applicationinsights": "^1.8.10",
+    "async": "^3.2.0",
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "connect-redis": "^5.0.0",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "mysql-migrations": "^1.0.7",
+    "nodemon": "^2.0.6",
+    "sails": "^1.2.4",
+    "sails-hook-email": "^0.12.1",
+    "sails-hook-fixtures": "^2.0.0",
+    "sails-hook-orm": "^2.1.1",
+    "sails-hook-sockets": "^2.0.0",
+    "sails-mysql": "^1.0.1",
+    "stream-chat": "^2.12.0",
+    "stripe": "^8.132.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "5.16.0",
+    "mocha": "^8.0.1",
+    "sails.io.js": "^1.2.1",
+    "socket.io-client": "^2.3.0"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node app.js",
+    "test": "npm run lint && npm run custom-tests && echo 'Done.'",
+    "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives --fix && echo '✔  Your .js files look good.'",
+    "custom-tests": "NODE_ENV=test npx mocha test/**/*.test.js --timeout 80000",
+    "serve": "nodemon --signal SIGTERM --exec \"npm run lint && node --inspect=0.0.0.0:9229 app.js\"",
+    "dev": "npm run serve",
+    "migrate": "node migrate.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/timofeybiryukov/api.git"
+  },
+  "author": "timofeybiryukov",
+  "license": "",
+  "engines": {
+    "node": "^12.18"
+  }
+}

@@ -1,0 +1,6 @@
+.vscode
+grv3
+.gitsecret/keys/random_seed
+!*.secret
+.env
+.DS_Store

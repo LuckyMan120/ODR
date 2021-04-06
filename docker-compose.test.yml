@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+  test-redis:
+    image: redis:6.0.9
+
+  db-test:
+    platform: linux/x86_64
+    image: mysql:5.7.31
+    ports:
+      - 3306
+    environment:
+      MYSQL_DATABASE: grv3_test
+      MYSQL_USER: grv3_test
+      MYSQL_PASSWORD: grv3_test
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+
+  api-test:
+    image: node:14.15.3
+    working_dir: /api
+    command: npm run test
+    environment:
+      NODE_ENV: test
+      sails_datastores__default__url: mysql://grv3_test:grv3_test@db-test:3306/grv3_test
+      sails_session__url: redis://test-redis:6379
+    volumes:
+      - ./api:/api
+      - ./.eslintrc:/.eslintrc
+    depends_on:
+      - test-redis
+      - db-test

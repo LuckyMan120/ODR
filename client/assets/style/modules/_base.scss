@@ -1,0 +1,241 @@
+@import "./colors";
+@import "./media";
+@import "./constants";
+@import "./mixins";
+
+* {
+  font-family: "Adelle Sans", Helvetica, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  font-weight: 300;
+}
+
+body {
+  background-color: $white;
+}
+
+a{
+  font-size: inherit;
+  color: $color_primary;
+}
+
+h4{
+  font-size: 1.3rem
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+//Background, border and radius as per Guided Resolution standard
+//To be used in cards, toasts, etc.
+.gr-container {
+  @include container();
+}
+
+//Background and text color
+.gr-header {
+  @include container($color_primary, $white, false);
+}
+ 
+.gr-card {
+  @include container();
+  width: $card_width;
+  height: $card_height;  
+}
+
+.gr-ellipsis-2 {
+  @include ellipsis(2);
+}
+
+.dark-bg{
+  background-color: $color_secondary;
+}
+.toasted-container.top-center {
+  top: 0 !important;
+}
+.toasted{
+  &.outline {
+    font-size: 1.2rem !important;
+    padding: 14px !important;
+    line-height: 1.4 !important;
+    &.success{
+      border-radius: 4px;
+      font-weight: normal;
+    }
+    &.error {
+      border-radius: 4px;
+      font-weight: normal;
+    }
+    &.info {
+      border-radius: 4px;
+      font-weight: normal;
+    }
+  }
+}
+
+.form-style{
+  padding: 25px 50px;
+  border-radius: 0 !important;
+  color: $color_primary;
+  h1.at-title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  .form-group {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 16px;
+    display: block !important;
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+  }
+  .at-signin-link {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    > p {
+      margin: 0px;
+      font-size: 15px;
+      #at-signIn {
+        color: $color_accent;
+      }
+    }
+  }
+  #at-pwd-link{
+    color: $color_accent;
+    font-size: 15px;
+    text-decoration: none;
+  }
+}
+input{
+  max-width: 350px;
+}
+.tiny-input input{
+  max-width: 150px;
+}
+.btn-outline-warning, .btn-warning {
+  color: color_accent;
+  border-color: color_accent;
+  &:hover {
+    color: $color_background;
+    background-color: $color_accent;
+  }
+}
+.custom-select{
+  width: auto;
+  color: $color_primary;
+}
+.form-control{
+  color: $color_primary;
+}
+.issue-intro-box{
+  background: white;
+  margin-bottom: 24px;
+  .issue-intro-title{
+      background: $color_accent;
+      color: $white;
+      padding: 13px 25px;
+      margin: 0;
+  }
+  .issue-intro-desc{
+      padding: 13px 25px;
+      border-top: 1px solid #DDDFE7;
+      border-bottom: 1px solid #DDDFE7;
+      border-left: 1px solid #DDDFE7;
+      border-right: 1px solid #DDDFE7;
+  }
+}
+
+.at-btn {
+  font-size: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 30px;
+  width: 100%;
+  background-color: $color_background;
+  &:hover {
+    color: $color_background;
+    background-color: $color_accent;
+  }
+}
+.dashed-button {
+  height: 40px;
+  background-color: white;
+  border: 1px dashed $color_primary;
+  color: $color_primary;
+}
+
+.dashed-button .b-icon {
+  font-size: 1.5em;
+}
+
+.dashed-button span {
+  font-size: 1.2em;
+}
+.text-muted{
+  color: #0b0b0e !important;
+}
+.min-height-5{
+  min-height: 500px;
+}
+.alert{
+  border-radius: 0.1rem;
+}
+.alert-info{
+  color: #5a4429;
+}
+.alert-success {
+  color: $color_success;
+  background-color: $white;
+  border-color: $color_success;
+}
+.alert-danger {
+  color:$red;
+  background-color:$white;
+  border-color: $red;
+}
+.toasted.outline.error {
+  color: $red;
+  border-color: $white;
+}
+.toasted.outline.success {
+  color: $color_success;
+  border-color: $color_success;
+}
+
+.primary-color {
+  color: $color_primary;
+}
+.card{
+  border-color: $color_accent;
+}
+textArea{
+  overflow-y: auto !important;
+}
+small{
+  font-size: 90%;
+  font-style: italic;
+}
+.td-20 {
+  width: 20%
+}
+.table-headless thead{
+  display: none;
+}
+label {
+  font-weight: normal;
+}
+.custom-control-label{
+  font-weight: normal  !important;
+}
+.table th, .table td {
+  vertical-align: middle;
+}
+ul li{
+  line-height: 1.5;
+}

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo '[post-merge hoook] reveal secrets';
+
+git secret reveal

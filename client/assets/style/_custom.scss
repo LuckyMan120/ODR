@@ -1,0 +1,15 @@
+.hover-primary:hover{
+    color: $primary;
+    cursor: pointer;
+}
+.custom-textarea textarea{
+    overflow-y: auto !important;
+}
+.btn:focus{
+    box-shadow: unset !important
+}
+.custom-select:disabled {
+    background-color: #e9ecef;
+    color: $color_primary;
+    opacity: 1;
+}

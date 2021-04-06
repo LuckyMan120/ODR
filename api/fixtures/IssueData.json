@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "value": "investmentsAndFinancialAdvice",
+    "user": 3,
+    "issue": 1,
+    "type": 12,
+    "party": 1
+  },
+  {
+    "id": 2,
+    "value": "investmentsAndFinancialAdvice.notBestInterestAdvice",
+    "user": 3,
+    "issue": 1,
+    "type": 13,
+    "party": 1
+  },
+  {
+    "id": 3,
+    "value": "He said that I said and then he yelled and that scared me...",
+    "user": 3,
+    "issue": 1,
+    "type": 11,
+    "party": 1
+  },
+  {
+    "id": 4,
+    "value": "That he will be nice and polite",
+    "user": 3,
+    "issue": 1,
+    "type": 14,
+    "party": 1
+  },
+  {
+    "id": 5,
+    "value": "Aplogy and a refund",
+    "user": 3,
+    "issue": 1,
+    "type": 15,
+    "party": 1
+  },
+  {
+    "id": 6,
+    "value": 1,
+    "user": 4,
+    "issue": 1,
+    "type": 16,
+    "party": 2
+  },
+  {
+    "id": 7,
+    "value": "$500 refund, and she agrees to not publish bad reviews on our Google places listing.",
+    "user": 4,
+    "issue": 1,
+    "type": 17,
+    "party": 2
+  },
+  {
+    "id": 8,
+    "value": 1,
+    "user": 3,
+    "issue": 1,
+    "type": 18,
+    "party": 1
+  },
+  {
+    "id": 9,
+    "value": 1,
+    "user": 4,
+    "issue": 1,
+    "type": 18,
+    "party": 2
+  },
+  {
+    "id": 10,
+    "value": 1,
+    "user": 3,
+    "issue": 1,
+    "type": 19,
+    "party": 1
+  }
+]

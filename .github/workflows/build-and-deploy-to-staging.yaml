@@ -1,0 +1,336 @@
+name: build-and-deploy-to-staging
+
+on:
+  pull_request:
+    branches:
+      - staging
+    types:
+      - closed
+    
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+       
+    env:
+      BUILD_CONTAINER_REGISTRY: guidedresolution.azurecr.io
+      BUILD_DOCKER_IMAGE_NAME_FOR_API: guidedresolution.azurecr.io/afs-api
+      BUILD_DOCKER_IMAGE_NAME_FOR_CLIENT: guidedresolution.azurecr.io/afs-client
+      BUILD_APP_SERVICE_NAME_FOR_API: guided-resolution-afs-api-stg
+      BUILD_APP_SERVICE_NAME_FOR_CLIENT: guided-resolution-afs-client-stg
+        
+    steps:           
+      - name: Login to container registry
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        run: echo ${{ secrets.CONTAINER_REGISTRY_PASSWORD }} | docker login --username ${{ secrets.CONTAINER_REGISTRY_USERNAME }} --password-stdin ${BUILD_CONTAINER_REGISTRY}
+        
+      - name: Login to Azure
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Checkout
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        uses: actions/checkout@v2
+
+      - name: Create image name for api
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        id: create_image_name_for_api
+        run: echo ::set-output name=value::$(echo ${BUILD_DOCKER_IMAGE_NAME_FOR_API}:${GITHUB_RUN_NUMBER})
+        
+      - name: Create image name for client
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        id: create_image_name_for_client
+        run: echo ::set-output name=value::$(echo ${BUILD_DOCKER_IMAGE_NAME_FOR_CLIENT}:${GITHUB_RUN_NUMBER})
+      
+      - name: Create version file for api
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        working-directory: api
+        run: |
+          cat > version.json << "EOF"
+            {
+              "version": "#{JOB_VERSION}#"
+            }
+          EOF
+      
+      - name: Create version file for client
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        working-directory: client
+        run: |
+          cat > version.json << "EOF"
+            {
+              "version": "#{JOB_VERSION}#"
+            }
+          EOF
+      
+      - name: Update version files
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        uses: cschleiden/replace-tokens@v1
+        with:
+          files: '["**/version.json"]'
+        env:
+          JOB_VERSION: ${{ github.run_number }}
+      - name: Build image for api
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        working-directory: api
+        run: docker image build --tag ${{steps.create_image_name_for_api.outputs.value}} .
+        
+      - name: Build image for client
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        working-directory: client
+        run: docker image build --tag ${{steps.create_image_name_for_client.outputs.value}} .
+        
+      - name: Push image for api to container registry
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        run: docker image push ${{steps.create_image_name_for_api.outputs.value}}
+        
+      - name: Push image for client to container registry
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        run: docker image push ${{steps.create_image_name_for_client.outputs.value}}
+      
+      - name: Tag git branch
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        uses: richardsimko/update-tag@v1.0.5
+        with:
+          tag_name: "staging-${{ github.run_number }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Deploy app service for api
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        uses: Azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.BUILD_APP_SERVICE_NAME_FOR_API }}
+          images: ${{steps.create_image_name_for_api.outputs.value}}
+      
+      - name: Configure app service for api
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        uses: Azure/appservice-settings@v1
+        with:
+          app-name: ${{ env.BUILD_APP_SERVICE_NAME_FOR_API }}
+          app-settings-json: |
+            [
+              {
+                "name": "DOCKER_REGISTRY_SERVER_URL",
+                "value": "https://${{ env.BUILD_CONTAINER_REGISTRY }}",
+                "slotSetting": false
+              },
+              {
+                "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+                "value": "${{ secrets.CONTAINER_REGISTRY_USERNAME }}",
+                "slotSetting": false
+              },
+              {
+                "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+                "value": "${{ secrets.CONTAINER_REGISTRY_PASSWORD }}",
+                "slotSetting": false
+              },
+              {
+                "name": "WEBSITE_ENABLE_SYNC_UPDATE_SITE",
+                "value": "true",
+                "slotSetting": false
+              },
+              {
+                "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+                "value": "false",
+                "slotSetting": false
+              },
+              {
+                "name": "WEBSITE_HTTPLOGGING_RETENTION_DAYS",
+                "value": "7",
+                "slotSetting": false
+              },
+              {
+                "name": "PORT",
+                "value": "443",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_session__host",
+                "value": "${{ secrets.STAGING_REDIS_HOST }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_session__tls__servername",
+                "value": "${{ secrets.STAGING_REDIS_HOST }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_session__port",
+                "value": "6380",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_session__pass",
+                "value": "${{ secrets.STAGING_REDIS_PASSWORD }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_datastores__default__host",
+                "value": "${{ secrets.STAGING_MYSQL_AFS_HOST }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_datastores__default__port",
+                "value": "3306",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_datastores__default__user",
+                "value": "${{ secrets.STAGING_MYSQL_AFS_USERNAME }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_datastores__default__password",
+                "value": "${{ secrets.STAGING_MYSQL_AFS_PASSWORD }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_datastores__default__database",
+                "value": "afs",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_email__transporter__host",
+                "value": "smtp.postmarkapp.com",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_email__transporter__port",
+                "value": "587",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_email__transporter__auth__user",
+                "value": "${{ secrets.STAGING_POSTMARK_TOKEN }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_email__transporter__auth__pass",
+                "value": "${{ secrets.STAGING_POSTMARK_TOKEN }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_abr__guid",
+                "value": "${{ secrets.ABR_GUID }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_getstream__key",
+                "value": "${{ secrets.STAGING_GETSTREAM_KEY }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_getstream__secret",
+                "value": "${{ secrets.STAGING_GETSTREAM_SECRET }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_custom__clientURL",
+                "value": "https://afs-staging.guidedresolution.com",
+                "slotSetting": false
+              },
+              {
+                "name": "APPLICATION_INSIGHTS_INSTRUMENTATION_KEY",
+                "value": "${{ secrets.STAGING_APPLICATION_INSIGHTS_KEY_API }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_sockets__onlyAllowOrigins",
+                "value": "[\"https://afs-staging.guidedresolution.com\"]",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_stripe__secretKey",
+                "value": "${{ secrets.STAGING_STRIPE_SECRET_KEY }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_api2pdf__apiKey",
+                "value": "${{ secrets.STAGING_API2PDF_KEY }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_stripe__signingSecret",
+                "value": "${{ secrets.STAGING_STRIPE_SIGNING_SECRET }}",
+                "slotSetting": false
+              },
+              {
+                "name": "sails_recaptcha__secretKey",
+                "value": "${{ secrets.STAGING_RECAPTCHA_SECRET_KEY }}",
+                "slotSetting": false
+              }
+            ]
+      
+      - name: Deploy app service for client
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        uses: Azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.BUILD_APP_SERVICE_NAME_FOR_CLIENT }}
+          images: ${{steps.create_image_name_for_client.outputs.value}}
+      
+      - name: Configure app service for client
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+        uses: Azure/appservice-settings@v1
+        with:
+          app-name: ${{ env.BUILD_APP_SERVICE_NAME_FOR_CLIENT }}
+          app-settings-json: |
+            [
+              {
+                "name": "DOCKER_REGISTRY_SERVER_URL",
+                "value": "https://${{ env.BUILD_CONTAINER_REGISTRY }}",
+                "slotSetting": false
+              },
+              {
+                "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+                "value": "${{ secrets.CONTAINER_REGISTRY_USERNAME }}",
+                "slotSetting": false
+              },
+              {
+                "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+                "value": "${{ secrets.CONTAINER_REGISTRY_PASSWORD }}",
+                "slotSetting": false
+              },
+              {
+                "name": "WEBSITE_ENABLE_SYNC_UPDATE_SITE",
+                "value": "true",
+                "slotSetting": false
+              },
+              {
+                "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+                "value": "false",
+                "slotSetting": false
+              },
+              {
+                "name": "WEBSITE_HTTPLOGGING_RETENTION_DAYS",
+                "value": "7",
+                "slotSetting": false
+              },
+              {
+                "name": "API_URL",
+                "value": "https://afs-api-staging.guidedresolution.com",
+                "slotSetting": false
+              },
+              {
+                "name": "GETSTREAM_KEY",
+                "value": "${{ secrets.STAGING_GETSTREAM_KEY }}",
+                "slotSetting": false
+              },
+              {
+                "name": "PORT",
+                "value": "443",
+                "slotSetting": false
+              },
+              {
+                "name": "STRIPE_PUBLISHABLE_KEY",
+                "value": "${{ secrets.STAGING_STRIPE_PUBLISHABLE_KEY }}",
+                "slotSetting": false
+              },
+              {
+                "name": "RECAPTCHA_SITE_KEY",
+                "value": "${{ secrets.STAGING_RECAPTCHA_SITE_KEY }}",
+                "slotSetting": false
+              }
+            ]

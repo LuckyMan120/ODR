@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "case": 1,
+    "caseActivityType": 2,
+    "caseUser": 1,
+    "caseParty": 1,
+    "shared": 1,
+    "message": "started the mediation",
+    "userName": "Bill Billson"
+  },
+  {
+    "id": 2,
+    "case": 1,
+    "caseActivityType": 7,
+    "caseUser": 3,
+    "shared": 1,
+    "message": "joined the mediation",
+    "userName": "Staff mcOrg "
+  },
+  {
+    "id": 1,
+    "case": 1,
+    "caseActivityType": 1,
+    "caseUser": 1,
+    "caseParty": 1,
+    "shared": 1,
+    "message": "agreed to ground rules",
+    "userName": "Bill Billson"
+  }
+]

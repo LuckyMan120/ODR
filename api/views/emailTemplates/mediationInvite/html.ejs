@@ -1,0 +1,8 @@
+<%- include('../header'); -%>
+  <p class="text-body">
+    <%= __('You are invited to the mediation: ')%>
+    <a 
+    href="<%=clientURL%>/<%=slug%>/register?email=<%=email%>&token=<%=token%>">
+      View</a>
+  </p>
+<%- include('../footer'); -%>

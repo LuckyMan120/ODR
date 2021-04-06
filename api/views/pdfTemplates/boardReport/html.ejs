@@ -1,0 +1,189 @@
+<tr>
+  <td>
+    <table
+      border="0"
+      cellpadding="0"
+      cellspacing="0"
+      width="100%"
+      style="border-collapse: collapse;"
+    >
+      <tr>
+        <td
+          style="color: #153643; font-family: Arial, sans-serif;text-align: center;"
+          bgcolor="#ffffff"
+        >
+          <h3 style="margin-top:20px">
+            <%= org.name %> <%= month %> <%= __('boardReport') %>
+          </h3>
+          <p>
+            <%= __('printed', moment().format('DD MMMM YYYY HH:MM')) %>
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td bgcolor="#ffffff">
+          <table
+            align="center"
+            border="0"
+            cellpadding="0"
+            cellspacing="0"
+            width="100%"
+            style="border-collapse: collapse;margin-top:40px;margin-bottom:40px;"
+          >
+            <tr>
+              <td
+                width="33%"
+                style="vertical-align:top;color: #153643; font-family: Arial, sans-serif;font-size:18px;font-weight:300;"
+              >
+                <h5 style="margin-left: 50px">
+                  <%= __('resolutionRate') %>: <%= statistics.resolutionRate %>%
+                </h5>
+              </td>
+              <td
+                width="33%"
+                style="vertical-align:top;color: #153643; font-family: Arial, sans-serif;font-size:18px;font-weight:300;"
+              >
+                <div style="margin-left: 50px">
+                  <h5>
+                    <%= __('responseTimes') %>:
+                  </h5>
+                  <%= __('min') %>: <%= statistics.responseTimes.min %> <br>
+                  <%= __('max') %>: <%= statistics.responseTimes.max %> <br>
+                  <%= __('average') %>: <%= statistics.responseTimes.average %>
+                </div>
+              </td>
+              <td
+                width="33%"
+                style="vertical-align:top;color: #153643; font-family: Arial, sans-serif;font-size:18px;font-weight:300;"
+              >
+                <div style="margin-left: 50px">
+                  <h5>
+                    <%= __('timeToResolution') %>:
+                  </h5>
+                  <%= __('min') %>: <%= statistics.resolutionTime.min %> <br>
+                  <%= __('max') %>: <%= statistics.resolutionTime.max %> <br>
+                  <%= __('average') %>: <%= statistics.resolutionTime.average %>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <div style="clear: both;">
+            <span style="display: none;" />
+          </div>
+          <div class="pdf-margin-top">
+            <div style="width:95%">
+              <div id="resolutionRatesOverTime"></div>
+            </div>
+            <div style="height:2px;background-color:#d3d3d3;width:100%;margin-top:10px">
+              &nbsp;
+            </div>
+            <div style="width:95%">
+              <div id="aveResponseTime"></div>
+            </div>
+            <div style="height:2px;background-color:#d3d3d3;width:100%;margin-top:10px">
+              &nbsp;
+            </div>
+            <div style="width:95%">
+              <div id="timeToResolution"></div>
+            </div>
+            <div style="height:2px;background-color:#d3d3d3;width:100%;margin-top:10px">
+              &nbsp;
+            </div>
+            <div style="width:95%">
+              <div id="monthlyComplaints"></div>
+            </div>
+            <div style="height:2px;background-color:#d3d3d3;width:100%;margin-top:10px">
+              &nbsp;
+            </div>
+            <div style="width:95%">
+              <div id="complaintTypeDistribution"></div>
+            </div>
+            <div style="height:2px;background-color:#d3d3d3;width:100%;margin-top:10px">
+              &nbsp;
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+<tr>
+  <td
+    bgcolor="#ffffff"
+    style="padding: 40px 30px 40px 30px;"
+  >
+    <table
+      border="1"
+      cellpadding="6"
+      cellspacing="0"
+      width="100%"
+      style="border-collapse: collapse;margin-top:20px;font-family: Arial, sans-serif; font-size: 16px; line-height: 24px;border: 1px solid #d3d3d3"
+    >
+      <tbody>
+        <tr>
+          <th style="font-weight:bold;text-align:left;">
+            <%= __('metric') %>
+          </th>
+          <th style="font-weight:bold;text-align:left;">
+            <%= __('thisMonth') %>
+          </th>
+          <th style="font-weight:bold;text-align:left;">
+            <%= __('accumulated') %>
+          </th>
+        </tr>
+        <tr>
+          <td><%= __('received') %></td>
+          <td><%= statistics.complaintsMetrics.received.month %></td>
+          <td><%= statistics.complaintsMetrics.received.year %></td>
+        </tr>
+        <tr>
+          <td><%= __('closed') %></td>
+          <td><%= statistics.complaintsMetrics.closed.month %></td>
+          <td><%= statistics.complaintsMetrics.closed.year %></td>
+        </tr>
+        <tr>
+          <td><%= __('resolved') %></td>
+          <td><%= statistics.complaintsMetrics.resolved.month %></td>
+          <td><%= statistics.complaintsMetrics.resolved.year %></td>
+        </tr>
+        <tr>
+          <td><%= __('unresolved') %></td>
+          <td><%= statistics.complaintsMetrics.unresolved.month %></td>
+          <td><%= statistics.complaintsMetrics.unresolved.year %></td>
+        </tr>
+        <tr>
+          <td><%= __('withdrawn') %></td>
+          <td><%= statistics.complaintsMetrics.withdrawn.month %></td>
+          <td><%= statistics.complaintsMetrics.withdrawn.year %></td>
+        </tr>
+        <tr>
+          <td><%= __('escalatedToAFCA') %></td>
+          <td><%= statistics.complaintsMetrics.escalatedToAFCA.month %></td>
+          <td><%= statistics.complaintsMetrics.escalatedToAFCA.year %></td>
+        </tr>
+        <tr>
+          <td><%= __('responseTime') %></td>
+          <td><%= statistics.complaintsMetrics.responseTime.month %></td>
+          <td><%= statistics.complaintsMetrics.responseTime.year %></td>
+        </tr>
+        <tr>
+          <td><%= __('timeToResolution') %></td>
+          <td><%= statistics.complaintsMetrics.timeToResolution.month %></td>
+          <td><%= statistics.complaintsMetrics.timeToResolution.year %></td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
+<script>
+  <%- highchartshs %>
+
+  Highcharts.chart('resolutionRatesOverTime', <%- resolutionRatesOverTime %>);
+  Highcharts.chart('aveResponseTime', <%- aveResponseTime %>);
+  Highcharts.chart('timeToResolution', <%- timeToResolution %>);
+  Highcharts.chart('monthlyComplaints', <%- monthlyComplaints %>);
+  Highcharts.chart('complaintTypeDistribution', <%- complaintTypeDistribution %>);
+</script>
